@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyricalApi", "LyricalApi\LyricalApi.csproj", "{AEB9F758-F0C5-4BAF-ADF9-F6DE86C6C7CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyricApi", "LyricApi\LyricApi.csproj", "{F209E1EA-06BF-4529-866D-25B518FA8691}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AEB9F758-F0C5-4BAF-ADF9-F6DE86C6C7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEB9F758-F0C5-4BAF-ADF9-F6DE86C6C7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEB9F758-F0C5-4BAF-ADF9-F6DE86C6C7CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F209E1EA-06BF-4529-866D-25B518FA8691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F209E1EA-06BF-4529-866D-25B518FA8691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F209E1EA-06BF-4529-866D-25B518FA8691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F209E1EA-06BF-4529-866D-25B518FA8691}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

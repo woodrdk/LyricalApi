@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LyricApi;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,37 +21,35 @@ namespace LyricalApi
         public frmMain()
         {
             InitializeComponent();
-
-            client.BaseAddress = 
-                new Uri("https://api.lyrics.ovh/v1/"); // must add forward slash at the end of base address
-            // Telling service how we want to accept data and other configuration options.
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
+            // notes
+            //client.BaseAddress = 
+            //    new Uri("https://api.lyrics.ovh/v1/"); // must add forward slash at the end of base address
+            //// Telling service how we want to accept data and other configuration options.
+            //client.DefaultRequestHeaders.Accept.Clear();
+            //client.DefaultRequestHeaders.Accept.Add(
+            //    new MediaTypeWithQualityHeaderValue("application/json"));
             
         }
                
         private void btnSearch_Click(object sender, EventArgs e)
         {
+
+            txtLyrics.Clear();
             string artist = txtArtistName.Text;
             string songTitle = txtSongTitle.Text;
+            LyricService LS = new LyricService();
+            SongLyrics result = LS.GetLyrics(artist, songTitle);
 
-            // note https://api.lyrics.ovh/v1/artistName/songTitle
-            HttpResponseMessage response = client.GetAsync($"{artist}/{songTitle}").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                string output = response.Content.ReadAsStringAsync().Result;
-                //MessageBox.Show(output);
-
-                txtLyrics.Text = output.Replace("\\n", Environment.NewLine); // need to clean up so that it puts the new line on the new lines
+            if (result != null) {
+                txtLyrics.Text = result.Lyrics;
             }
             else
             {
-                txtLyrics.Text = "Artist or song not found";
-                //MessageBox.Show("Not Found");
+                MessageBox.Show("No lyrics found");
             }
         }
+
+       
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -59,6 +59,12 @@ namespace LyricalApi
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(" This was a basic api learning tool for my ADV .NET WEB PROGRAMMING class. 11/5/18 At Clover Park Technical College." +
+                "\n Robert M. Wood Jr.");
         }
     }
 
